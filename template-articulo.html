@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGI Oligopolio — Atlas de Fuerzas Subterráneas</title>
+    <meta name="description" content="Análisis prospectivo: 3 empresas privadas controlan la carrera hacia inteligencia artificial general">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #1A1A2E;
+            --accent-primary: #00D9FF;
+            --accent-secondary: #B455FF;
+            --text-primary: #E8E8E8;
+            --text-secondary: #A0A0A0;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        /* Same header as main blog */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .back-link:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Article styles */
+        .article-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .article-category {
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--accent-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FFFFFF, var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .article-intro {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 3rem;
+        }
+
+        .article-section {
+            margin-bottom: 4rem;
+        }
+
+        .article-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-primary);
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .article-section h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+        }
+
+        .article-section h3 {
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        .article-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        .highlight-box {
+            background: rgba(0, 217, 255, 0.05);
+            border-left: 4px solid var(--accent-primary);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: 1.15rem;
+        }
+
+        .timeline {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+        }
+
+        .timeline-item strong {
+            color: var(--accent-primary);
+        }
+
+        ul, ol {
+            margin: 1.5rem 0 1.5rem 2rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(180, 85, 255, 0.1));
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .cta-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .article-section h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ATLAS · FUERZAS SUBTERRÁNEAS</div>
+            <a href="../index.html" class="back-link">← Volver a artículos</a>
+        </nav>
+    </header>
+
+    <main class="article-container">
+        <article>
+            <div class="article-header">
+                <div class="article-meta">
+                    <span class="article-category">OLIGOPOLIOS TECNOLÓGICOS</span>
+                    <span>Horizonte 2028-2030</span>
+                    <span>15 min lectura</span>
+                </div>
+                <h1>AGI Oligopolio — 3 empresas controlan la inteligencia artificial general</h1>
+                <p class="article-intro">
+                    OpenAI, DeepMind y Anthropic lideran la carrera hacia AGI. Para 2028 una de estas empresas 
+                    alcanza capacidades que superan al humano en todas las tareas cognitivas. El que llegue primero 
+                    no gana un mercado. Redefine el poder global. 8.000 millones de personas. 3 empresas privadas. 
+                    Cero regulación efectiva.
+                </p>
+            </div>
+
+            <section class="article-section">
+                <h2>Contexto actual — Lo que está pasando hoy</h2>
+                <p>
+                    OpenAI, DeepMind (Google) y Anthropic lideran la carrera hacia AGI — inteligencia artificial 
+                    general que supera al humano en todas las tareas cognitivas. OpenAI con GPT-4, DeepMind con 
+                    Gemini, Anthropic con Claude. Meta y X.AI compiten pero van atrás. China tiene sus propios 
+                    jugadores (Baidu, Alibaba) pero operan en ecosistema separado.
+                </p>
+                <p>
+                    La inversión acumulada entre las 3 líderes supera los <strong>50.000 millones de dólares</strong>. 
+                    Ninguna es pública. Todas operan con capital privado o bajo control corporativo de gigantes tecnológicos.
+                </p>
+                <p>
+                    El patrón es claro: cada 12-18 meses aparece un modelo que duplica capacidades del anterior. 
+                    GPT-3 → GPT-4 → próxima generación. Cada salto reduce la brecha entre capacidad humana y capacidad de máquina.
+                </p>
+
+                <div class="highlight-box">
+                    <p><strong>Dato clave:</strong> En 2024 los modelos más avanzados superan al humano promedio en 
+                    razonamiento matemático, programación y comprensión de texto. Lo que falta es razonamiento abstracto 
+                    y generalización total. Esa brecha se cierra exponencialmente.</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>El escenario 2028-2030 — La reconfiguración del poder</h2>
+                
+                <div class="timeline">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--accent-primary);">Línea de tiempo proyectada</h3>
+                    <div class="timeline-item">
+                        <strong>2026:</strong> Uno de los 3 alcanza capacidades equivalentes a humano experto en todas las áreas. 
+                        No lo anuncian públicamente. Primero lo prueban internamente.
+                    </div>
+                    <div class="timeline-item">
+                        <strong>2027:</strong> Demostraciones privadas a gobiernos y Fortune 100. El que tiene AGI primero 
+                        ofrece acceso restringido a aliados estratégicos.
+                    </div>
+                    <div class="timeline-item">
+                        <strong>2028:</strong> Anuncio público. Paper técnico, luego conferencia. El mundo se entera que 
+                        existe una IA que puede hacer cualquier trabajo cognitivo mejor que cualquier humano.
+                    </div>
+                    <div class="timeline-item">
+                        <strong>2029:</strong> Los otros dos competidores principales intentan regulación para frenar al 
+                        ganador. Fracasan. El momentum es irreversible.
+                    </div>
+                    <div class="timeline-item">
+                        <strong>2030:</strong> El 60% de las decisiones corporativas estratégicas en Fortune 500 son 
+                        generadas o validadas por sistemas AGI.
+                    </div>
+                </div>
+
+                <h3>Lo que cambia cuando AGI existe</h3>
+                <p>
+                    La empresa que alcanza AGI primero no solo gana un mercado. Gana la capacidad de:
+                </p>
+                <ul>
+                    <li><strong>Redefinir qué es trabajo:</strong> Si una IA puede hacer el 90% de los trabajos cognitivos 
+                    mejor que un humano, ¿quién decide qué trabajos quedan, a qué precio y bajo qué condiciones?</li>
+                    <li><strong>Concentrar poder sin precedente:</strong> 2-3 corporaciones tienen más poder que la mayoría 
+                    de gobiernos democráticos. ¿Cómo evitas que se conviertan en nuevos estados sin voto?</li>
+                    <li><strong>Diseñar el sistema de coordinación global:</strong> Decisiones sobre cambio climático, 
+                    pandemias, conflictos — una AGI puede procesarlas mejor que cualquier institución humana. ¿Quién controla esa AGI?</li>
+                </ul>
+            </section>
+
+            <section class="article-section">
+                <h2>Señales tempranas — Cómo detectar que se está activando</h2>
+                <p>Rastrea estas señales en los próximos 24-36 meses:</p>
+                <ul>
+                    <li>Anuncio de capacidades que superan benchmarks humanos en razonamiento abstracto</li>
+                    <li>Contratación masiva de especialistas en alineación y seguridad (no en desarrollo de modelos)</li>
+                    <li>Reuniones privadas con jefes de estado sin anuncios públicos</li>
+                    <li>Propuestas de autorregulación antes de que gobiernos actúen</li>
+                    <li>Inversión en infraestructura de cómputo que supera PIB de países pequeños</li>
+                    <li>Fusiones o adquisiciones entre los 3 líderes (si uno va muy adelante, los otros se unen)</li>
+                </ul>
+            </section>
+
+            <section class="article-section">
+                <h2>La pregunta sistémica que nadie responde</h2>
+                <div class="highlight-box">
+                    <p>
+                        Si una IA puede hacer el 90% de los trabajos cognitivos mejor que un humano, ¿quién decide 
+                        qué trabajos quedan, a qué precio y bajo qué condiciones? Y si esa IA es propiedad privada 
+                        de 2-3 corporaciones, esas corporaciones tienen más poder que la mayoría de gobiernos democráticos.
+                    </p>
+                </div>
+                <p>
+                    No existe marco regulatorio internacional para esto. La ONU no tiene jurisdicción sobre empresas privadas. 
+                    Los gobiernos nacionales pueden regular dentro de sus fronteras, pero AGI opera globalmente.
+                </p>
+                <p>
+                    Y el problema es más profundo: regular AGI requiere entenderla. Pero si la AGI es más inteligente 
+                    que los reguladores, ¿cómo la regulan? Es como pedirle a un niño de 5 años que regule las decisiones 
+                    de un adulto genio.
+                </p>
+            </section>
+
+            <section class="article-section">
+                <h2>Implicaciones para organizaciones</h2>
+                <p>Si diriges una empresa, una universidad o una institución pública, estas son las preguntas que deberías estar haciéndote:</p>
+                <ul>
+                    <li>¿Qué porcentaje de nuestras decisiones estratégicas podría ser mejorado por AGI?</li>
+                    <li>¿Estamos construyendo dependencia de proveedores de IA sin plan de contingencia?</li>
+                    <li>¿Qué trabajos en nuestra organización son automatizables en los próximos 3-5 años?</li>
+                    <li>¿Tenemos capacidad interna de evaluar outputs de IA o confiamos ciegamente?</li>
+                    <li>¿Nuestro modelo de negocio sobrevive si AGI democratiza expertise que hoy cobramos?</li>
+                </ul>
+            </section>
+
+            <div class="cta-section">
+                <h3>¿Tu organización está preparada para el escenario AGI?</h3>
+                <p>
+                    Ofrezco consultoría estratégica usando el Método VFA para mapear futuros posibles 
+                    y diseñar la agenda de decisiones que aumenta probabilidad de tu escenario deseado.
+                </p>
+                <a href="#contacto" class="btn">Solicitar análisis VFA</a>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
